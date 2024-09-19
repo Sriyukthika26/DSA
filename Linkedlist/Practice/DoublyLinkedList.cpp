@@ -113,17 +113,69 @@ public:
     }
 
 };
+
+
+//reverse doublyLL
+void reverseLL(node* &head){
+    node* curr = head;
+    while(curr->next!=NULL){
+        node* temp = curr->next;
+        curr->next = curr->prev;
+        curr->prev = temp;    
+        curr = temp;
+    }
+    curr->next = curr->prev;
+    curr->prev = NULL;
+    head = curr;
+
+}
+
+bool checkPalindrome(node* head, node*tail){
+    while(head!= tail && tail != head->prev){
+        if(head->data != tail->data){
+            return false;
+        }
+        head = head->next;
+        tail = tail->prev;
+    }
+    return true;
+}
+
+//del if prev and next neighbours have same value
+void delSameNeighNode(node* &head){
+    node* curr = head->next;
+    while(curr->next!=NULL){
+        node* prev_node = curr->prev;
+        node* next_node = curr->next;
+        if(prev_node->data==next_node->data){
+            prev_node->next = next_node;
+            next_node->prev = prev_node;
+            free(curr);
+        }
+        curr = next_node;
+    }
+}
+
+
 int main(){
     node* new_node = new node(1);
     DLL dll;
+    dll.insertatlast(1);
+    dll.insertatlast(2);
     dll.insertatlast(3);
-    dll.insertatlast(8);
-    dll.insertatlast(9);
-    dll.insertatlast(7);
+    dll.insertatlast(2);
+    dll.insertatlast(1);
     dll.display();
-    dll.insertatk(4,2);
-    dll.deleteathead();
+    dll.insertatk(2,4);
     dll.display();
-    dll.deleteatk(3);
+    // dll.deleteathead();
+    // dll.display();
+    // dll.deleteatk(3);
+    // dll.display();
+    // reverseLL(dll.head);
+    // dll.display();
+    // cout<<checkPalindrome(dll.head, dll.tail)<<"\n";
+    delSameNeighNode(dll.head);
     dll.display();
+
 }
