@@ -81,14 +81,13 @@ void rev_ll(node*&head){
     node*prev=NULL;
     node*curr = head;
     
-    while(curr->next!=NULL){
+    while(curr!=NULL){
         node*temp = curr->next;
         curr->next = prev;
         prev = curr;
         curr = temp;
     }
-    curr->next = prev;
-    head = curr;
+    head = prev;
 }
 
 // reverse linkedlist using recursion
