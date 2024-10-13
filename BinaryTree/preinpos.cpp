@@ -43,6 +43,13 @@ void inorderiter(TreeNode* root){
     }
 }
 
+void preordertraversal(TreeNode* root){
+    if(root== NULL) return;
+    cout<<root->key<<" ";
+    preordertraversal(root->left);
+    preordertraversal(root->right);
+}
+
 
 //iterative preorder
 void preorderiter(TreeNode* root){
@@ -58,14 +65,6 @@ void preorderiter(TreeNode* root){
     if(cNode->right) s.push(cNode->right);
     if(cNode->left) s.push(cNode->left);
     }
-}
-
-
-void preordertraversal(TreeNode* root){
-    if(root== NULL) return;
-    cout<<root->key<<" ";
-    preordertraversal(root->left);
-    preordertraversal(root->right);
 }
 
 void postorder(TreeNode* root){

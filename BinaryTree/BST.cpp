@@ -65,6 +65,14 @@ public:
         if(root->key<x) return SearchRec(x,root->right);
     }
 
+    TreeNode* searchBST(TreeNode* root, int val) {             //return NULL, if does not exist
+        if(root== NULL) return NULL;
+        if(root->key == val) return root;
+        if(root->key > val) return searchBST(root->left, val);
+        if(root->key < val) return searchBST(root->right, val);
+
+        return NULL;
+    }
 
     // value just smaller than root value-- rightmost value of leftsubtree
     TreeNode* jstsmall(TreeNode* root){
