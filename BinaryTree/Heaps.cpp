@@ -2,10 +2,10 @@
 using namespace std;
 
 class MaxHeap{
-    int *arr;
     int heapsize;
     int maxsize;
 public:
+    int *arr;
     MaxHeap(int maxsize){
         maxsize = maxsize;
         heapsize=0;
@@ -79,7 +79,7 @@ public:
             return arr[0];
         }
         int maxi = arr[0];
-        arr[0] = arr[heapsize-1];
+        swap(arr[0], arr[heapsize-1]);
         heapsize--;
         maxheapify(0);
 
@@ -91,6 +91,15 @@ public:
         extractmax();
     }
 };
+    void heapssort(MaxHeap mh){
+
+        int n = mh.getsize();
+        while(mh.getsize()>1){
+            mh.extractmax();
+        }
+
+        for(int i=0;i<n;i++) cout<<mh.arr[i]<<" ";
+    }
 
 int main(){
     MaxHeap mh(15);
@@ -102,16 +111,18 @@ int main(){
     mh.insert(1);
 
     mh.print();
-    cout<<mh.getmax()<<"\n";
-    cout<<mh.getsize()<<"\n";
+    // cout<<mh.getmax()<<"\n";
+    // cout<<mh.getsize()<<"\n";
 
-    cout<<mh.extractmax()<<"\n";
-    mh.print();
+    // cout<<mh.extractmax()<<"\n";
+    // mh.print();
 
-    mh.increasekey(2,9);
-    mh.print();
+    // mh.increasekey(2,9);
+    // mh.print();
 
-    mh.deletekey(2);
-    mh.print();
+    // mh.deletekey(2);
+    // mh.print();
+
+    heapssort(mh);
 
 }
