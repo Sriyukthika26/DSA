@@ -51,9 +51,7 @@ void Insertionsort(vector<string>&a){
 }
 
 int main(){
-    vector<string>a = {"papaya", "lime", "banana"}; //  20 60 50 40 10 30
+    vector<string>a = {"papaya", "lime", "banana"}; //  20 60 50 40 10 
     Insertionsort(a);
     for (int i = 0; i < a.size(); i++) cout<<a[i]<<" ";
-    
-
 }

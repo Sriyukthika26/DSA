@@ -3,6 +3,7 @@ using namespace std;
 //used when large datasets
 //stable sort
 //linked list ->  merge sort
+//best,avg,worst case -O(NlogN)
 
 void Merge(vector<int>&a, int l , int mid, int r){
     int an = mid-l+1; int bn = r-mid;
