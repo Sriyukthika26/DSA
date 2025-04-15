@@ -20,6 +20,8 @@ bool color(int n, vector <vector<int>> &adj, int ind, int m, vector<int> &col){
     return false;
 }
 
+//o(m^n) time complexity and o(n) space complexity
+
 int main() {
     int n;
     int m;
