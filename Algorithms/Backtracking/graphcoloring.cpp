@@ -1,9 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-bool color(int n, vector <vector<int>> &adj, int ind, int c, vector<int> &col){
+bool color(int n, vector <vector<int>> &adj, int ind, int m, vector<int> &col){
     if(ind==n) return true;
-    for(int i=0; i<c; i++){
+    for(int i=0; i<m; i++){
         bool found=0;
         for(int v:adj[ind]){
             if(col[v]==i){
@@ -13,7 +13,7 @@ bool color(int n, vector <vector<int>> &adj, int ind, int c, vector<int> &col){
         }
         if(!found){
             col[ind]=i;
-            if(color(n,adj,ind+1,c,col)) return true;
+            if(color(n,adj,ind+1,m,col)) return true;
             col[ind]=-1;
         }
     }
@@ -31,10 +31,10 @@ int main() {
         adj[u].push_back(v);
         adj[v].push_back(u);
     }
-    int c;
-    cin>>c;
+    int m;
+    cin>>m;
     vector<int> col(n,-1);
-    bool poss= color(n,adj,0,c,col);
+    bool poss= color(n,adj,0,m,col);
     if(poss){
         for(int i=0; i<n; i++) cout<<col[i]<<" ";
         cout<<"\n";
