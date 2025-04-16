@@ -8,12 +8,6 @@ int n = s1.size();
 int m = s2.size();
 
 vector<vector<int>> dp(n + 1, vector < int > (m + 1, 0));
-for (int i = 0; i <= n; i++) {
-    dp[i][0] = 0;
-}
-for (int i = 0; i <= m; i++) {
-    dp[0][i] = 0;
-}
 
 for (int i = 1; i <= n; i++) {
     for (int j = 1; j <= m; j++) {
@@ -55,3 +49,8 @@ int main() {
   cout << "The Longest Common Subsequence is ";
   lcs(s1, s2);
 }
+
+//backtracking from dp table = o(n+m)
+//lcs = o(n*m)
+
+//overall o(n*m)
