@@ -3,13 +3,10 @@
 
 using namespace std;
 
-
-vector<vector<pair<int,int>>> tree;
 int boosterCount = 0;
-int lossLimit;
 
-void dfs(int node, int parent, int accumulatedLoss) {
-    if (accumulatedLoss > lossLimit) {
+void dfs(int node, int parent, int accumulatedLoss, vector<vector<pair<int,int>>>&tree, int losslimit) {
+    if (accumulatedLoss > losslimit) {
         // Place booster here
         boosterCount++;
         accumulatedLoss = 0; // Reset loss after booster
@@ -17,7 +14,7 @@ void dfs(int node, int parent, int accumulatedLoss) {
 
     for (auto edge : tree[node]) {
         if (edge.first != parent) {
-            dfs(edge.first, node, accumulatedLoss + edge.second);
+            dfs(edge.first, node, accumulatedLoss + edge.second, tree, losslimit);
         }
     }
 }
@@ -26,11 +23,9 @@ int main() {
     int n, L;
     cout << "Enter number of nodes and loss tolerance level: ";
     cin >> n >> L;
-    lossLimit = L;
 
-    tree.resize(n);
+    vector<vector<pair<int,int>>> tree(n);
 
-    cout << "Enter " << n - 1 << " edges (format: u v loss):\n";
     for (int i = 0; i < n - 1; ++i) {
         int u, v, loss;
         cin >> u >> v >> loss;
@@ -39,7 +34,7 @@ int main() {
     }
 
     // Start DFS from root node 0
-    dfs(0, -1, 0);
+    dfs(0, -1, 0, tree,L);
 
     cout << "Minimum boosters needed: " << boosterCount << endl;
     return 0;
