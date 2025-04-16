@@ -2,12 +2,6 @@
 #include <vector>
 using namespace std;
 
-const int INF = 1e9;
-
-// struct Edge {
-//     int to, loss;
-// };
-
 int boosterCount = 0;
 
 int dfs(int node, int parent, vector<vector<pair<int,int>>>& tree, int L) {
